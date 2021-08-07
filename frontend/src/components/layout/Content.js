@@ -1,8 +1,19 @@
 import Product from "../product";
 
-const Content = (props) => {
-    const products = props.products;
+import {useDispatch, useSelector} from 'react-redux';
+import {getProducts} from '../../actions/productsAction';
+import { useEffect } from "react";
+
+const Content = () => {
     
+    const {loading, products, productsCount} = useSelector(state=>state.products);
+
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(getProducts());
+
+    },[dispatch]);
    
     return (
         <section className="py-5">
