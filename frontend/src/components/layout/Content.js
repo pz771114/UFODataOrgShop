@@ -5,6 +5,7 @@ import { getProducts } from "../../actions/productsAction";
 import { useEffect } from "react";
 import LoaderSpinner from "./LoaderSpinner";
 import { toast } from "react-toastify";
+
 const Content = () => {
   const { loading, products, productsCount, error } = useSelector(
     (state) => state.products
