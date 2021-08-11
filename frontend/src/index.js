@@ -7,27 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import store from './store/store';
 
-//Alert
-import { transitions, positions, Provider as AlertProvider } from 'react-alert';
-import AlertTemplate from 'react-alert-template-basic';
-
-// optional configuration
-const options = {
-  // you can also just use 'bottom center'
-  position: positions.BOTTOM_CENTER,
-  timeout: 5000,
-  offset: '30px',
-  // you can also just use 'scale'
-  transition: transitions.SCALE
-}
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <Provider store={store}>
-
-    <AlertProvider template={AlertTemplate} {...options}>
       <App />
-    </AlertProvider>
-    
+      <ToastContainer/>
   </Provider>,
   document.getElementById('root')
 );
