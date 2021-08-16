@@ -12,7 +12,7 @@ const Header = () => {
         <div className="overflow-hidden" style={{ maxHeight: "30vh" }}>
           <div className="container px-5">
             <img
-              src="hero.jpg"
+              src="/hero.jpg"
               className="img-fluid border rounded-3 shadow-lg mb-4"
               loading="lazy"
             />
