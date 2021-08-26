@@ -1,10 +1,10 @@
-const Product = (props) => {
+import { Link } from "react-router-dom";
+const Product = ({ product }) => {
   const inlineStyle = {
     top: "0.5rem",
     right: "0.5rem",
   };
 
-  const product = props.product;
   return (
     <div className="col mb-5">
       <div className="card h-100">
@@ -15,9 +15,9 @@ const Product = (props) => {
           Sale
         </div>
 
-        <a href={"/product/" + product._id}>
+        <Link to={`/product/${product._id}`}>
           <img className="card-img-top" src={product.images[0].url} alt="..." />
-        </a>
+        </Link>
 
         <div className="card-body p-4">
           <div className="text-center">
