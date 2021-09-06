@@ -27,7 +27,7 @@ exports.registerUser = async (req, res, next) => {
 exports.loginUser = async (req, res, next) => {
   const { email, password } = req.body;
   //check if email and password are empty value
-
+  //console.log("post body in controller:", email, password);
   if (!email || !password) {
     return res.status(400).json({
       message: "Please enter email and password",
@@ -57,6 +57,7 @@ exports.loginUser = async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    user,
     token,
   });
 };
