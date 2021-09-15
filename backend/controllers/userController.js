@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const storeToken = require("../utils/jwt");
 
 exports.registerUser = async (req, res, next) => {
   try {
@@ -53,11 +54,13 @@ exports.loginUser = async (req, res, next) => {
     });
   }
 
-  const token = user.getJwtToken();
+  // const token = user.getJwtToken();
 
-  res.status(200).json({
-    success: true,
-    user,
-    token,
-  });
+  // res.status(200).json({
+  //   success: true,
+  //   user,
+  //   token,
+  // });
+
+  storeToken(user, 200, res);
 };
