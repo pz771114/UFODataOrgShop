@@ -64,3 +64,14 @@ exports.loginUser = async (req, res, next) => {
 
   storeToken(user, 200, res);
 };
+
+exports.logoutUser = async (req, res, next) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    message: "User has logged out",
+  });
+};
