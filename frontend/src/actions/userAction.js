@@ -22,3 +22,14 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: "LOGIN_FAIL", payload: error.message });
   }
 };
+
+//User logout
+export const logout = () => async (dispatch) => {
+  try {
+    await axios.get("/api/v1/logout");
+
+    dispatch({ type: "LOGOUT_SUCCESS" });
+  } catch (error) {
+    dispatch({ type: "LOGOUT_FAIL", payload: error.message });
+  }
+};

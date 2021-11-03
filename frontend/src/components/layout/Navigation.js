@@ -1,4 +1,15 @@
+import React, { Fragement } from "react";
+import { Route, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/userAction";
+
 const Navigation = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.userLogin);
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container px-4 px-lg-5">
@@ -61,6 +72,8 @@ const Navigation = () => {
               </ul>
             </li>
           </ul>
+
+          {/*
           <form className="d-flex">
             <button className="btn btn-outline-dark" type="submit">
               <i className="bi-cart-fill me-1"></i>
@@ -70,6 +83,22 @@ const Navigation = () => {
               </span>
             </button>
           </form>
+          */}
+          {user ? (
+            <Link
+              to="/"
+              className="btn btn-outline-dark"
+              onClick={logoutHandler}
+            >
+              <i className="bi bi-box-arrow-in-left"></i>
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login" className="btn btn-outline-dark">
+              <i className="bi bi-door-open-fill"></i>
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </nav>
