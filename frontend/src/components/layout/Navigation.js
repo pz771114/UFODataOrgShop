@@ -10,6 +10,11 @@ const Navigation = () => {
   const logoutHandler = () => {
     dispatch(logout());
   };
+
+  const icon_style = {
+    fontSize: "1.5rem",
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container px-4 px-lg-5">
@@ -85,14 +90,40 @@ const Navigation = () => {
           </form>
           */}
           {user ? (
-            <Link
-              to="/"
-              className="btn btn-outline-dark"
-              onClick={logoutHandler}
-            >
-              <i className="bi bi-box-arrow-in-left"></i>
-              Logout
-            </Link>
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {user.name}
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <a className="dropdown-item" href="#">
+                    <i class="bi bi-cart4 px-1" style={icon_style}></i>
+                    Carts
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    <i class="bi bi-person-circle px-1" style={icon_style}></i>
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#" onClick={logoutHandler}>
+                    <i class="bi bi-door-open-fill px-1" style={icon_style}></i>
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
           ) : (
             <Link to="/login" className="btn btn-outline-dark">
               <i className="bi bi-door-open-fill"></i>
