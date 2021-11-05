@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const productAPI = require("../utils/productAPI");
 
 exports.createProduct = async (req, res, next) => {
   try {
@@ -17,7 +18,11 @@ exports.createProduct = async (req, res, next) => {
 
 exports.getProducts = async (req, res, next) => {
   try {
-    const products = await Product.find();
+    //const products = await Product.find();
+
+    const productsApi = new productAPI(Product.find(), req.query).search();
+    const products = await productsApi.query;
+
     res.status(200).json({
       success: true,
       products,
